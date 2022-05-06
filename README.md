@@ -1,42 +1,44 @@
-# 私有以太坊搭建协议与部署
+# 私有以太坊 搭建 运行 协议 与 部署
 
 ## 以太坊安装
 
 https://geth.ethereum.org/docs/install-and-build/installing-geth#install-from-a-package-manager
 
 ## 配置以太坊
-- 创世节点genesis配置
+
+- 创世节点 genesis 配置
+
 ```json
 {
-    "config": {
-        "chainId": 666,
-        "homesteadBlock": 0,
-        "eip150Block": 0,
-        "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-        "eip155Block": 0,
-        "eip158Block": 0,
-        "byzantiumBlock": 0,
-        "constantinopleBlock": 0,
-        "petersburgBlock": 0,
-        "istanbulBlock": 0,
-        "ethash": {}
-    },
-    "nonce": "0x0",
-    "timestamp": "0x5ddf8f3e",
-    "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "gasLimit": "0x47b760",
-    "difficulty": "0x00002",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "coinbase": "0x0000000000000000000000000000000000000000",
-    "alloc": { },
-    "number": "0x0",
-    "gasUsed": "0x0",
-    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  "config": {
+    "chainId": 666,
+    "homesteadBlock": 0,
+    "eip150Block": 0,
+    "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "byzantiumBlock": 0,
+    "constantinopleBlock": 0,
+    "petersburgBlock": 0,
+    "istanbulBlock": 0,
+    "ethash": {}
+  },
+  "nonce": "0x0",
+  "timestamp": "0x5ddf8f3e",
+  "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "gasLimit": "0x47b760",
+  "difficulty": "0x00002",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "alloc": {},
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
 }
-
 ```
 
 - 初始化
+
 ```bash
 geth init /home/sdhou/ethereum/genesis.json --datadir /home/sdhou/ethereum/data
 ```
@@ -47,26 +49,28 @@ geth init /home/sdhou/ethereum/genesis.json --datadir /home/sdhou/ethereum/data
 geth --datadir "/home/sdhou/ethereum/data" --ws --ws.api "eth,web3,miner,admin,personal,net,txpool" --ws.origins "*" --nodiscover --networkid 15 --allow-insecure-unlock --ipcpath ~/Library/Ethereum/geth.ipc --http --http.port 3334 --unlock 0x350c9229a136736c053b3adc9b6d50a522e9dda4 --password pwd --mine --miner.threads 1
 ```
 
-- [以太坊官方命令行geth启动参数说明](https://geth.ethereum.org/docs/interface/command-line-options)
+- [以太坊官方命令行 geth 启动参数说明](https://geth.ethereum.org/docs/interface/command-line-options)
 
-## 以太坊geth命令行部分操作说明
+## 以太坊 geth 命令行部分操作说明
 
 - 连接
+
 ```bash
  geth attach rpc:/home/sdhou/Library/Ethereum/geth.ipc
 ```
+
 - 创建账户 personal.newAccount()
 - 获取账户地址 eth.accounts
 - 查看账户余额 eth.getBalance(eth.accounts[0])
-- 开始挖矿来产生以太币 miner.start(1) 一代表起用一个thread
+- 开始挖矿来产生以太币 miner.start(1) 一代表起用一个 thread
 - 查看任务队列 txpool.status
 - eth 以太坊设置
 - personal 账户设置
 - miner 矿工设置
 - txpool 队列池
 
-## truffle开发部署测试奇好用的工具
+## TODO
 
-## 以太坊多节点部署与同步设置
-
-## solidity协议开发与部署
+- truffle 开发部署测试奇好用的工具
+- 以太坊多节点部署与同步设置
+- solidity 协议开发与部署
