@@ -69,8 +69,22 @@ geth --datadir "/home/sdhou/ethereum/data" --ws --ws.api "eth,web3,miner,admin,p
 - miner 矿工设置
 - txpool 队列池
 
+## truffle 开发部署测试奇好用的工具
+
+- [安装](https://trufflesuite.com/docs/truffle/getting-started/installation/)
+- 初始化项目 truffle init
+- 修改 truffle-config.js 配置以太坊服务链接信息
+- 连接以太坊 truffle console --network dev
+- 部署二号合约 truffle migrate -f 2 --to 2 --network dev
+- 调用合约方法
+
+```js
+let storage = await Storage.at(Storage.address);
+storage.store(666);
+storage.retrieve();
+```
+
 ## TODO
 
-- truffle 开发部署测试奇好用的工具
 - 以太坊多节点部署与同步设置
-- solidity 协议开发与部署
+- solidity 协议开发
