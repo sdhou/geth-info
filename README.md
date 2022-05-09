@@ -46,7 +46,7 @@ geth init /home/sdhou/ethereum/genesis.json --datadir /home/sdhou/ethereum/data
 ## 运行以太坊
 
 ```bash
-geth --datadir "/home/sdhou/ethereum/data" --ws --ws.api "eth,web3,miner,admin,personal,net,txpool" --ws.origins "*" --nodiscover --networkid 15 --allow-insecure-unlock --ipcpath ~/Library/Ethereum/geth.ipc --http --http.port 3334 --unlock 0x350c9229a136736c053b3adc9b6d50a522e9dda4 --password pwd --mine --miner.threads 1
+geth --datadir "/home/sdhou/ethereum/data" --ws --ws.api "eth,web3,miner,admin,personal,net,txpool" --ws.origins "*" --nodiscover --networkid 15 --allow-insecure-unlock --ipcpath ~/Library/Ethereum/geth.ipc --http --http.port 3334 --unlock 0x350c9229a136736c053b3adc9b6d50a522e9dda4 --password pwd --mine --miner.threads 1 --syncmode full
 ```
 
 - [以太坊官方命令行 geth 启动参数说明](https://geth.ethereum.org/docs/interface/command-line-options)
@@ -84,7 +84,17 @@ storage.store(666);
 storage.retrieve();
 ```
 
+## 以太坊多节点部署与相互同步
+
+[同步模式官方文档](https://ethereum.org/en/developers/docs/nodes-and-clients/#sync-modes)
+
+- 设置同步模式 --syncmode full
+- 在 geth console 中获取两个以太坊的 enode 信息 admin.nodeInfo
+- 在两个节点中填上对方 enode 信息 admin.addPeer("xxx")
+- 查看各自节点信息 admin.peers
+
 ## TODO
 
-- 以太坊多节点部署与同步设置
+- 程序调用 web3.0
 - solidity 协议开发
+- 协议数据迁移
