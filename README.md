@@ -93,8 +93,21 @@ storage.retrieve();
 - 在两个节点中填上对方 enode 信息 admin.addPeer("xxx")
 - 查看各自节点信息 admin.peers
 
+## js 调用以太坊
+
+[文档地址](https://learnblockchain.cn/docs/web3.js/index.html)
+
+```js
+yarn add web3
+const Web3 = require("web3");
+const web3 = new Web3("ws://localhost:8546");
+web3.eth.getAccounts().then(console.log);
+let contract = new web3.eth.Contract(abi, address);
+contract.methods.store('abc').send({from: "0x350c9229a136736c053b3adc9b6d50a522e9dda4"}).then(function(data){
+  console.log(data);
+});
+```
+
 ## TODO
 
-- 程序调用 web3.0
-- solidity 协议开发
 - 协议数据迁移
