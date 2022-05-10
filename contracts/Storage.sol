@@ -7,15 +7,19 @@ pragma solidity >=0.7.0 <0.9.0;
  * @dev Store & retrieve value in a variable
  */
 contract Storage {
-    mapping(bytes32 => string) private data;
+    mapping(bytes32 => string) public data;
+    bytes32[] public keys;
 
     function store(string memory v) public returns (bytes32) {
         bytes32 k = keccak256(abi.encodePacked(v));
-        data[k] = v;
+        if (k != keccak256(abi.encodePacked(data[k]))) {
+            keys.push(k);
+            data[k] = v;
+        }
         return k;
     }
 
-    function getValue(bytes32 k) public view returns (string memory) {
-        return data[k];
+    function giveKeys() public view returns (bytes32[] memory) {
+        return keys;
     }
 }
